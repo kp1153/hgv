@@ -36,10 +36,10 @@ export default async function Home() {
         {/* Hero Section */}
         <div className="bg-zinc-700 rounded-lg p-8 mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            India View Point में आपका स्वागत है
+            डॉ. सत्यवान सौरभ में आपका स्वागत है
           </h1>
           <p className="text-xl text-zinc-300">
-            भारतीय दृष्टिकोण से समाचार, विश्लेषण और जानकारी
+            सामाजिक न्याय से जुड़े मामलों पर विश्लेषण और जानकारी
           </p>
         </div>
 
@@ -65,7 +65,7 @@ export default async function Home() {
 
               <div className="p-6 flex flex-col flex-grow">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs bg-orange-500 text-white px-3 py-1 rounded-full font-semibold">
+                  <span className="text-xs bg-blue-700 text-white px-3 py-1 rounded-full font-semibold">
                     {post.category?.name || "सामान्य"}
                   </span>
                   <span className="text-xs text-zinc-400 font-medium">
@@ -73,7 +73,7 @@ export default async function Home() {
                   </span>
                 </div>
 
-                <h2 className="text-xl font-bold mb-4 line-clamp-2 leading-tight text-white hover:text-orange-400 transition-colors">
+                <h2 className="text-xl font-bold mb-4 line-clamp-2 leading-tight text-white hover:text-blue-400 transition-colors">
                   <Link
                     href={`/${post.category?.slug?.current}/${post.slug?.current}`}
                     className="hover:underline"
@@ -86,7 +86,7 @@ export default async function Home() {
                   {post.category?.slug?.current && post.slug?.current && (
                     <Link
                       href={`/${post.category.slug.current}/${post.slug.current}`}
-                      className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold text-sm hover:underline transition-colors"
+                      className="inline-flex items-center text-blue-400 hover:text-blue-300 font-semibold text-sm hover:underline transition-colors"
                     >
                       और पढ़ें
                       <svg

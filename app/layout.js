@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "India View Point - भारतीय दृष्टिकोण",
-  description: "समाचार, करेंट अफेयर्स, सिनेमा, स्वास्थ्य और विविध",
+  title: "डॉ. सत्यवान सौरभ - सामाजिक न्याय से जुड़े मामलों के लेखक",
+  description:
+    "करेंट अफेयर्स, राजनीतिक विमर्श, स्त्री विमर्श, साहित्य-जगत, पशु चिकित्सा और विविध",
 };
 
 export default function RootLayout({ children }) {

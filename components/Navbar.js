@@ -8,9 +8,10 @@ export default function Navbar() {
   const routes = [
     { name: "होम", path: "/" },
     { name: "करेंट अफेयर्स", path: "/current-affairs" },
-    { name: "न्यूज", path: "/news" },
-    { name: "सिनेमा", path: "/cinema" },
-    { name: "हेल्थ", path: "/health" },
+    { name: "राजनीतिक विमर्श", path: "/political-discourse" },
+    { name: "स्त्री विमर्श", path: "/women-discourse" },
+    { name: "साहित्य-जगत", path: "/literature" },
+    { name: "पशु चिकित्सा", path: "/veterinary" },
     { name: "विविध", path: "/misc" },
   ];
 
@@ -20,11 +21,11 @@ export default function Navbar() {
         {/* Website Name - Centered */}
         <div className="flex justify-center items-center py-6">
           <Link href="/" className="text-center">
-            <div className="text-4xl font-extrabold text-amber-600">
-              India View Point
+            <div className="text-4xl font-extrabold text-blue-700">
+              डॉ. सत्यवान सौरभ
             </div>
-            <div className="text-2xl font-extrabold text-amber-600 mt-1">
-              इंडिया व्यू प्वाइंट
+            <div className="text-xl font-medium text-blue-700 mt-1">
+              सामाजिक न्याय से जुड़े मामलों के लेखक
             </div>
           </Link>
         </div>
@@ -35,7 +36,7 @@ export default function Navbar() {
             <Link
               key={route.path}
               href={route.path}
-              className="text-white hover:text-orange-400 transition-colors"
+              className="text-white hover:text-blue-400 transition-colors"
             >
               {route.name}
             </Link>
@@ -78,7 +79,7 @@ export default function Navbar() {
               <Link
                 key={route.path}
                 href={route.path}
-                className="block py-2 text-white hover:text-orange-400"
+                className="block py-2 text-white hover:text-blue-400"
                 onClick={() => setIsOpen(false)}
               >
                 {route.name}

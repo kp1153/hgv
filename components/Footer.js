@@ -5,10 +5,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4 text-white">
-              India View Point
+              डॉ. सत्यवान सौरभ
             </h3>
             <p className="text-zinc-400">
-              भारतीय दृष्टिकोण से समाचार और विश्लेषण
+              सामाजिक न्याय से जुड़े मामलों के लेखक
             </p>
           </div>
 
@@ -56,7 +56,7 @@ export default function Footer() {
               href="https://www.web-developer-kp.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-orange-400 hover:text-orange-300 font-semibold hover:underline"
+              className="text-blue-400 hover:text-blue-300 font-semibold hover:underline"
             >
               क्रिएटिव सॉल्यूशंस
             </a>
