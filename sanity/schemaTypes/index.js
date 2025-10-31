@@ -228,43 +228,7 @@ const categoryType = {
       name: "slug",
       title: "URL Slug",
       type: "slug",
-      options: {
-        source: "name",
-        maxLength: 96,
-        slugify: (input) => {
-          // Check if input is in English (no Hindi characters)
-          const hasHindi = /[\u0900-\u097F]/.test(input);
-
-          if (hasHindi) {
-            // Hindi text - transliterate
-            const romanized = hindiToRoman(input);
-            const timePart = new Date()
-              .toISOString()
-              .replace(/[-:.TZ]/g, "")
-              .slice(0, 14);
-            return `${romanized}-${timePart}`;
-          } else {
-            // English text - just slugify normally
-            const slug = input
-              .toLowerCase()
-              .trim()
-              .replace(/[^\w\s-]/g, "")
-              .replace(/\s+/g, "-");
-            const timePart = new Date()
-              .toISOString()
-              .replace(/[-:.TZ]/g, "")
-              .slice(0, 14);
-            return `${slug}-${timePart}`;
-          }
-        },
-      },
       validation: (Rule) => Rule.required().error("Slug आवश्यक है"),
-    },
-    {
-      name: "description",
-      title: "विवरण",
-      type: "text",
-      rows: 3,
     },
   ],
   preview: {
