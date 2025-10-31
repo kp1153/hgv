@@ -16,12 +16,12 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-zinc-100">
+    <nav className="bg-zinc-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Website Name - Centered */}
         <div className="flex justify-center items-center py-6">
           <Link href="/" className="text-center">
-            <div className="text-4xl font-extrabold text-blue-700">
+            <div className="text-4xl font-extrabold text-amber-600">
               डॉ. सत्यवान सौरभ
             </div>
             <div className="text-xl font-medium text-blue-700 mt-1">
