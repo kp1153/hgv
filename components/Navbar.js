@@ -6,25 +6,37 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const routes = [
-    { name: "होम", path: "/" },
-    { name: "करेंट अफेयर्स", path: "/current-affairs" },
-    { name: "राजनीतिक विमर्श", path: "/political-discourse" },
-    { name: "स्त्री विमर्श", path: "/women-discourse" },
-    { name: "साहित्य-जगत", path: "/literature" },
-    { name: "पशु चिकित्सा", path: "/veterinary" },
-    { name: "विविध", path: "/misc" },
+    { name: "होम", path: "/", color: "text-red-600" },
+    {
+      name: "करेंट अफेयर्स",
+      path: "/current-affairs",
+      color: "text-orange-600",
+    },
+    {
+      name: "राजनीतिक विमर्श",
+      path: "/political-discourse",
+      color: "text-yellow-600",
+    },
+    {
+      name: "स्त्री विमर्श",
+      path: "/women-discourse",
+      color: "text-green-600",
+    },
+    { name: "साहित्य-जगत", path: "/literature", color: "text-blue-600" },
+    { name: "पशु चिकित्सा", path: "/veterinary", color: "text-indigo-600" },
+    { name: "विविध", path: "/misc", color: "text-purple-600" },
   ];
 
   return (
-    <nav className="bg-zinc-900">
+    <nav className="bg-sky-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Website Name - Centered */}
         <div className="flex justify-center items-center py-6">
           <Link href="/" className="text-center">
-            <div className="text-4xl font-extrabold text-amber-600">
+            <div className="text-4xl font-extrabold text-blue-600">
               डॉ. सत्यवान सौरभ
             </div>
-            <div className="text-xl font-medium text-blue-700 mt-1">
+            <div className="text-xl font-medium text-pink-700 mt-3">
               सामाजिक न्याय से जुड़े मामलों के लेखक
             </div>
           </Link>
@@ -36,7 +48,7 @@ export default function Navbar() {
             <Link
               key={route.path}
               href={route.path}
-              className="text-white hover:text-blue-400 transition-colors"
+              className={`${route.color} hover:text-blue-700 transition-colors font-semibold`}
             >
               {route.name}
             </Link>
@@ -46,7 +58,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white absolute top-6 right-4"
+          className="md:hidden text-blue-600 absolute top-6 right-4"
         >
           <svg
             className="w-6 h-6"
@@ -79,7 +91,7 @@ export default function Navbar() {
               <Link
                 key={route.path}
                 href={route.path}
-                className="block py-2 text-white hover:text-blue-400"
+                className={`block py-2 ${route.color} hover:text-blue-700 font-semibold`}
                 onClick={() => setIsOpen(false)}
               >
                 {route.name}
