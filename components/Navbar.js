@@ -16,7 +16,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-zinc-900">
+    <nav className="bg-zinc-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Website Name - Centered */}
         <div className="flex justify-center items-center py-6">

@@ -51,7 +51,7 @@ export default function Footer() {
 
         <div className="border-t border-zinc-700 mt-8 pt-6 text-center text-zinc-400">
           <p>
-            © 2025, All Rights Reserved to Harigovind Vishwakarma. Design by{" "}
+            © 2025, All Rights Reserved to Dr. Satyawan Saurabh. Design by{" "}
             <a
               href="https://www.web-developer-kp.com"
               target="_blank"
