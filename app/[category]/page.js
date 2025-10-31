@@ -1,15 +1,17 @@
 import { getPostsByCategory } from "@/lib/sanity";
 import Link from "next/link";
 import Image from "next/image";
+import { Eye } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
 const getCategoryDisplayName = (route) => {
   const displayNames = {
     "current-affairs": "करेंट अफेयर्स",
-    news: "न्यूज",
-    cinema: "सिनेमा",
-    health: "हेल्थ",
+    "political-discourse": "राजनीतिक विमर्श",
+    "women-discourse": "स्त्री विमर्श",
+    literature: "साहित्य-जगत",
+    veterinary: "पशु चिकित्सा",
     misc: "विविध",
   };
   return displayNames[route] || route;
@@ -21,9 +23,10 @@ export default async function CategoryPage({ params }) {
 
   const validCategories = [
     "current-affairs",
-    "news",
-    "cinema",
-    "health",
+    "political-discourse",
+    "women-discourse",
+    "literature",
+    "veterinary",
     "misc",
   ];
 
@@ -35,7 +38,7 @@ export default async function CategoryPage({ params }) {
           <p className="text-zinc-300 text-lg">यह श्रेणी मौजूद नहीं है।</p>
           <Link
             href="/"
-            className="inline-block mt-4 text-orange-400 hover:text-orange-300 font-semibold hover:underline"
+            className="inline-block mt-4 text-blue-400 hover:text-blue-300 font-semibold hover:underline"
           >
             ← होम पेज पर वापस जाएं
           </Link>
@@ -64,7 +67,7 @@ export default async function CategoryPage({ params }) {
           <div className="mb-6">
             <Link
               href="/"
-              className="text-orange-400 hover:text-orange-300 font-medium hover:underline mb-2 inline-block"
+              className="text-blue-400 hover:text-blue-300 font-medium hover:underline mb-2 inline-block"
             >
               ← वापस
             </Link>
@@ -91,7 +94,7 @@ export default async function CategoryPage({ params }) {
         <div className="mb-6">
           <Link
             href="/"
-            className="text-orange-400 hover:text-orange-300 font-medium hover:underline mb-2 inline-block"
+            className="text-blue-400 hover:text-blue-300 font-medium hover:underline mb-2 inline-block"
           >
             ← वापस
           </Link>
@@ -121,7 +124,7 @@ export default async function CategoryPage({ params }) {
 
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs bg-orange-500 text-white px-3 py-1 rounded-full font-semibold">
+                  <span className="text-xs bg-blue-700 text-white px-3 py-1 rounded-full font-semibold">
                     {post.category?.name || "सामान्य"}
                   </span>
                   <span className="text-xs text-zinc-400 font-medium">
@@ -132,31 +135,38 @@ export default async function CategoryPage({ params }) {
                 <h2 className="text-xl font-bold mb-4 text-white leading-tight">
                   <Link
                     href={`/${safeCategory}/${post.slug.current}`}
-                    className="hover:underline hover:text-orange-400 transition-colors"
+                    className="hover:underline hover:text-blue-400 transition-colors"
                   >
                     {post.title}
                   </Link>
                 </h2>
 
-                <Link
-                  href={`/${safeCategory}/${post.slug.current}`}
-                  className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold text-sm hover:underline transition-colors"
-                >
-                  पूरी खबर पढ़ें
-                  <svg
-                    className="w-4 h-4 ml-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                <div className="flex items-center justify-between">
+                  <Link
+                    href={`/${safeCategory}/${post.slug.current}`}
+                    className="inline-flex items-center text-blue-400 hover:text-blue-300 font-semibold text-sm hover:underline transition-colors"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </Link>
+                    पूरी खबर पढ़ें
+                    <svg
+                      className="w-4 h-4 ml-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
+
+                  <div className="flex items-center gap-1 text-zinc-400 text-sm">
+                    <Eye size={16} />
+                    <span>{(post.views || 0).toLocaleString()}</span>
+                  </div>
+                </div>
               </div>
             </article>
           ))}
@@ -164,4 +174,3 @@ export default async function CategoryPage({ params }) {
       </div>
     </main>
   );
-}

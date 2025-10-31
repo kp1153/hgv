@@ -2,6 +2,7 @@ import React from "react";
 import { getAllPosts } from "@/lib/sanity";
 import Link from "next/link";
 import Image from "next/image";
+import { Eye } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -82,7 +83,7 @@ export default async function Home() {
                   </Link>
                 </h2>
 
-                <div className="mt-auto">
+                <div className="mt-auto flex items-center justify-between">
                   {post.category?.slug?.current && post.slug?.current && (
                     <Link
                       href={`/${post.category.slug.current}/${post.slug.current}`}
@@ -104,6 +105,11 @@ export default async function Home() {
                       </svg>
                     </Link>
                   )}
+
+                  <div className="flex items-center gap-1 text-zinc-400 text-sm">
+                    <Eye size={16} />
+                    <span>{(post.views || 0).toLocaleString()}</span>
+                  </div>
                 </div>
               </div>
             </article>

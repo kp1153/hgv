@@ -3,15 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPostBySlugAndCategory, urlFor } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
+import ViewCounter from "@/components/ViewCounter";
 
 export const dynamic = "force-dynamic";
 
 const getCategoryDisplayName = (route) => {
   const displayNames = {
     "current-affairs": "करेंट अफेयर्स",
-    news: "न्यूज",
-    cinema: "सिनेमा",
-    health: "हेल्थ",
+    "political-discourse": "राजनीतिक विमर्श",
+    "women-discourse": "स्त्री विमर्श",
+    literature: "साहित्य-जगत",
+    veterinary: "पशु चिकित्सा",
     misc: "विविध",
   };
   return displayNames[route] || route;
@@ -32,7 +34,7 @@ const portableTextComponents = {
       <h3 className="text-xl font-bold mb-3 text-white mt-5">{children}</h3>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-orange-500 pl-6 italic text-zinc-300 my-6 bg-zinc-700 py-4 rounded-r-lg">
+      <blockquote className="border-l-4 border-blue-700 pl-6 italic text-zinc-300 my-6 bg-zinc-700 py-4 rounded-r-lg">
         {children}
       </blockquote>
     ),
@@ -65,7 +67,7 @@ const portableTextComponents = {
       return (
         <a
           href={href}
-          className="text-orange-400 hover:text-orange-300 underline font-medium"
+          className="text-blue-400 hover:text-blue-300 underline font-medium"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -105,9 +107,10 @@ export default async function NewsPage({ params }) {
 
   const validCategories = [
     "current-affairs",
-    "news",
-    "cinema",
-    "health",
+    "political-discourse",
+    "women-discourse",
+    "literature",
+    "veterinary",
     "misc",
   ];
 
@@ -140,12 +143,15 @@ export default async function NewsPage({ params }) {
     <main className="min-h-screen bg-zinc-600">
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-6">
-          <span className="text-sm bg-orange-500 text-white px-3 py-1 rounded-full font-semibold">
+          <span className="text-sm bg-blue-700 text-white px-3 py-1 rounded-full font-semibold">
             {categoryDisplayName}
           </span>
-          <span className="text-sm text-zinc-300 font-medium">
-            {formatDate(post.publishedAt)}
-          </span>
+          <div className="flex items-center gap-4">
+            <ViewCounter slug={safeSlug} initialViews={post.views || 0} />
+            <span className="text-sm text-zinc-300 font-medium">
+              {formatDate(post.publishedAt)}
+            </span>
+          </div>
         </div>
 
         <h1 className="text-4xl font-bold mb-8 text-white leading-tight">
@@ -183,7 +189,7 @@ export default async function NewsPage({ params }) {
         <div className="flex items-center justify-center">
           <Link
             href="/"
-            className="inline-flex items-center px-6 py-3 bg-zinc-700 text-white rounded-lg hover:bg-orange-500 transition-colors font-semibold"
+            className="inline-flex items-center px-6 py-3 bg-zinc-700 text-white rounded-lg hover:bg-blue-700 transition-colors font-semibold"
           >
             होम पेज
             <svg
