@@ -174,3 +174,4 @@ export default async function CategoryPage({ params }) {
       </div>
     </main>
   );
+  }
