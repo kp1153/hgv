@@ -34,16 +34,6 @@ export default async function Home() {
   return (
     <div className="bg-zinc-600 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Hero Section */}
-        <div className="bg-zinc-700 rounded-lg p-8 mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            डॉ. सत्यवान सौरभ में आपका स्वागत है
-          </h1>
-          <p className="text-xl text-zinc-300">
-            सामाजिक न्याय से जुड़े मामलों पर विश्लेषण और जानकारी
-          </p>
-        </div>
-
         {/* Posts Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-max">
           {posts.map((post) => (
