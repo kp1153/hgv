@@ -37,8 +37,9 @@ export default function Navbar() {
             <div className="text-4xl font-extrabold text-blue-600">
               डॉ. सत्यवान सौरभ
             </div>
-            <div className="text-xl font-medium text-pink-700 mt-3">
-              सामाजिक न्याय से जुड़े मामलों के लेखक
+            <div className="text-xl font-medium text-blue-600 mt-3">
+              सामाजिक न्याय के लिए लेखनी के जरिए संघर्षरत दंपति प्रियंका
+              सौरभ-डॉ. सत्यवान सौरभ
             </div>
           </Link>
         </div>
