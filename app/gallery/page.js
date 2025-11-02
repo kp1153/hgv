@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-const Gallery = () => {
+export default function Gallery() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const images = [
     "/images/1.jpeg",
@@ -25,8 +25,8 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Slider Section - 1/4 page height */}
-      <div className="relative h-[25vh] overflow-hidden">
+      {/* Slider Section - 1/2 page height */}
+      <div className="relative h-[50vh] overflow-hidden">
         {images.map((img, index) => (
           <div
             key={index}
@@ -38,7 +38,7 @@ const Gallery = () => {
               src={img}
               alt={`Gallery ${index + 1}`}
               fill
-              className="object-cover"
+              className="object-contain bg-gray-900"
               priority={index === 0}
             />
           </div>
@@ -62,7 +62,7 @@ const Gallery = () => {
       <div className="max-w-4xl mx-auto px-4 py-12 space-y-16">
         {/* Article 1 - Priyanka Saurabh */}
         <article className="bg-white rounded-lg shadow-md p-8">
-          <h1 className="text-3xl font-bold text-amber-600 mb-4">
+          <h1 className="text-3xl font-bold text-blue-600 mb-4">
             संघर्ष से सिद्धि तक: प्रियंका सौरभ की प्रेरक यात्रा
           </h1>
 
@@ -190,7 +190,7 @@ const Gallery = () => {
 
         {/* Article 2 - Dr. Satyawan Saurabh */}
         <article className="bg-white rounded-lg shadow-md p-8">
-          <h1 className="text-3xl font-bold text-amber-600 mb-4">
+          <h1 className="text-3xl font-bold text-blue-600 mb-4">
             गाँव से ग्लोबल तक: डॉ. सत्यवान सौरभ की कलम की उड़ान
           </h1>
 
@@ -361,6 +361,4 @@ const Gallery = () => {
       </div>
     </div>
   );
-};
-
-export default Gallery;
+}
