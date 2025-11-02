@@ -72,9 +72,6 @@ export default async function CategoryPage({ params }) {
               ← वापस
             </Link>
           </div>
-          <h1 className="text-4xl font-bold mb-6 text-white">
-            {categoryDisplayName} की खबरें
-          </h1>
           <div className="text-center py-12 bg-zinc-700 rounded-lg">
             <h2 className="text-2xl font-semibold text-white mb-4">
               कोई खबर नहीं मिली
@@ -99,10 +96,6 @@ export default async function CategoryPage({ params }) {
             ← वापस
           </Link>
         </div>
-
-        <h1 className="text-4xl font-bold mb-8 text-white">
-          {categoryDisplayName} की खबरें
-        </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
@@ -174,4 +167,4 @@ export default async function CategoryPage({ params }) {
       </div>
     </main>
   );
-  }
+}
