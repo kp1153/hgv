@@ -1,8 +1,13 @@
+import SubscribeForm from "./SubscribeForm";
+
 export default function Footer() {
   return (
     <footer className="bg-sky-200 border-t border-blue-300 mt-auto">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Subscribe Form */}
+        <SubscribeForm />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
           <div>
             <h3 className="text-xl font-bold mb-4 text-blue-600">
               डॉ. सत्यवान सौरभ

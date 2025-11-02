@@ -1,6 +1,4 @@
-// sanity/schemaTypes/index.js
-
-// Hindi to Roman transliteration function
+import subscriber from "./subscriber";
 function hindiToRoman(input) {
   if (!input) return "";
 
@@ -453,5 +451,5 @@ const postType = {
 };
 
 export const schema = {
-  types: [categoryType, blockContentType, postType],
+  types: [subscriber,categoryType, blockContentType, postType],
 };
