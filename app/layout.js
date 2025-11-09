@@ -15,27 +15,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "डॉ. सत्यवान सौरभ - सामाजिक न्याय से जुड़े मामलों के लेखक",
+  title: "मशाल - नई समाजवादी क्रांति की दिशा",
   description:
-    "करेंट अफेयर्स, राजनीतिक विमर्श, स्त्री विमर्श, साहित्य-जगत, पशु चिकित्सा और विविध",
+    "मार्क्सवाद-लेनिनवाद, वर्ग-संघर्ष, किसान-मजदूर आंदोलन, क्रांतिकारी साहित्य और राजनीतिक विश्लेषण",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="hi">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-zinc-600`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-gray-100`}
       >
-        {/* Header */}
         <Navbar />
-
-        {/* Main content */}
         <main className="flex-grow">{children}</main>
-
-        {/* Footer */}
         <Footer />
-
-        {/* Google Analytics */}
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
       </body>
     </html>

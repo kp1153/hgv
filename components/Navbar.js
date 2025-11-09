@@ -1,107 +1,135 @@
 "use client";
-import Link from "next/link";
 import { useState } from "react";
+import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
 
-export default function Navbar() {
+export default function MashalNavbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
-  const routes = [
-    { name: "होम", path: "/", color: "text-red-600" },
+  const navItems = [
+    { name: "होम", href: "/" },
+    { name: "हमारे बारे में", href: "/about" },
     {
-      name: "करेंट अफेयर्स",
-      path: "/current-affairs",
-      color: "text-orange-600",
+      name: "विचार / सिद्धांत",
+      href: "/theory",
+      submenu: [
+        { name: "मार्क्सवाद-लेनिनवाद", href: "/theory/marxism-leninism" },
+        { name: "वर्ग-संघर्ष", href: "/theory/class-struggle" },
+        { name: "क्रांति और समाजवाद", href: "/theory/revolution-socialism" },
+        { name: "अंतरराष्ट्रीय दृष्टिकोण", href: "/theory/international" },
+      ],
     },
     {
-      name: "राजनीतिक विमर्श",
-      path: "/political-discourse",
-      color: "text-yellow-600",
+      name: "राजनीति / देश-दुनिया",
+      href: "/politics",
+      submenu: [
+        { name: "भारतीय राजनीति", href: "/politics/indian" },
+        { name: "अंतरराष्ट्रीय परिदृश्य", href: "/politics/international" },
+        { name: "फासीवाद और प्रतिरोध", href: "/politics/fascism-resistance" },
+        { name: "किसान-मजदूर आंदोलन", href: "/politics/movements" },
+      ],
     },
     {
-      name: "स्त्री विमर्श",
-      path: "/women-discourse",
-      color: "text-green-600",
+      name: "आंदोलन / संघर्ष",
+      href: "/movements",
+      submenu: [
+        { name: "किसान आंदोलन", href: "/movements/farmers" },
+        { name: "मजदूर संघर्ष", href: "/movements/workers" },
+        { name: "छात्र-युवा आंदोलन", href: "/movements/students" },
+        { name: "महिलाओं के अधिकार", href: "/movements/women" },
+      ],
     },
-    { name: "साहित्य-जगत", path: "/literature", color: "text-blue-600" },
-    { name: "पशु चिकित्सा", path: "/veterinary", color: "text-indigo-600" },
-    { name: "विविध", path: "/misc", color: "text-purple-600" },
-    { name: "गैलरी", path: "/gallery", color: "text-pink-600" },
+    {
+      name: "संस्कृति / साहित्य",
+      href: "/culture",
+      submenu: [
+        { name: "क्रांतिकारी कविता", href: "/culture/poetry" },
+        { name: "कला, फिल्म, और नाटक", href: "/culture/art-film" },
+        { name: "लोक-संस्कृति", href: "/culture/folk" },
+        { name: "आलोचना", href: "/culture/criticism" },
+      ],
+    },
+    { name: "लेखक / संपादक मंडल", href: "/authors" },
+    { name: "संपर्क / योगदान", href: "/contact" },
   ];
 
+  const toggleDropdown = (name) => {
+    setOpenDropdown(openDropdown === name ? null : name);
+  };
+
   return (
-    <nav className="bg-sky-200">
+    <nav className="bg-red-700 text-white sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Website Name - Centered */}
-        <div className="flex justify-center items-center py-6">
-          <Link href="/" className="text-center">
-            <div className="text-4xl font-extrabold text-blue-600">
-              डॉ. सत्यवान सौरभ
-            </div>
-            <div className="text-xl font-medium text-blue-600 mt-3">
-              सामाजिक न्याय के लिए लेखनी के जरिए संघर्षरत दंपति प्रियंका
-              सौरभ-डॉ. सत्यवान सौरभ
-            </div>
-          </Link>
-        </div>
+        <div className="flex justify-between items-center h-auto py-4">
+          <div className="flex-1 flex justify-center items-center">
+            <a href="/" className="text-center">
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <span className="text-4xl sm:text-5xl">🔥</span>
+                <span className="text-3xl sm:text-4xl font-black tracking-wide">मशाल</span>
+              </div>
+              <p className="text-xs sm:text-sm font-medium leading-tight max-w-xs">
+                नई समाजवादी क्रांति का वाहक<br />मजदूर-पक्षीय अखबार
+              </p>
+            </a>
+          </div>
 
-        {/* Desktop Menu - Third Line */}
-        <div className="hidden md:flex justify-center space-x-8 py-4 border-t border-zinc-700">
-          {routes.map((route) => (
-            <Link
-              key={route.path}
-              href={route.path}
-              className={`${route.color} hover:text-blue-700 transition-colors font-semibold`}
-            >
-              {route.name}
-            </Link>
-          ))}
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-blue-600 absolute top-6 right-4"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 rounded-md hover:bg-red-600 absolute right-4 top-4"
+            aria-label="Menu"
           >
-            {isOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
-        </button>
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden pb-4 border-t border-zinc-700">
-            {routes.map((route) => (
-              <Link
-                key={route.path}
-                href={route.path}
-                className={`block py-2 ${route.color} hover:text-blue-700 font-semibold`}
-                onClick={() => setIsOpen(false)}
-              >
-                {route.name}
-              </Link>
+      {isOpen && (
+        <div className="bg-red-800 border-t border-red-600">
+          <div className="max-w-7xl mx-auto px-4 py-3 space-y-1">
+            {navItems.map((item) => (
+              <div key={item.name}>
+                {item.submenu ? (
+                  <>
+                    <button
+                      onClick={() => toggleDropdown(item.name)}
+                      className="w-full flex items-center justify-between px-4 py-3 rounded-md text-base font-medium hover:bg-red-700 transition"
+                    >
+                      <span>{item.name}</span>
+                      {openDropdown === item.name ? (
+                        <ChevronUp size={18} />
+                      ) : (
+                        <ChevronDown size={18} />
+                      )}
+                    </button>
+                    {openDropdown === item.name && (
+                      <div className="pl-4 space-y-1 mt-1">
+                        {item.submenu.map((subitem) => (
+                          <a
+                            key={subitem.name}
+                            href={subitem.href}
+                            className="block px-4 py-2 rounded-md text-sm hover:bg-red-700 transition"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {subitem.name}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <a
+                    href={item.href}
+                    className="block px-4 py-3 rounded-md text-base font-medium hover:bg-red-700 transition"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                )}
+              </div>
             ))}
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </nav>
   );
 }
