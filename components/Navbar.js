@@ -68,7 +68,7 @@ export default function MashalNavbar() {
                 <span className="text-3xl sm:text-4xl font-black tracking-wide">मशाल</span>
               </div>
               <p className="text-xs sm:text-sm font-medium leading-tight max-w-xs">
-                नई समाजवादी क्रांति का वाहक<br />मजदूर-पक्षीय अखबार
+                कायनात रौशन करने वाले मजदूरों मेहनतकशों की आवाज़ <br />मजदूर-पक्षीय अखबार
               </p>
             </a>
           </div>
