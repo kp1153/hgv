@@ -322,6 +322,21 @@ export const schema = {
           validation: (Rule) => Rule.uri({ scheme: ["http", "https"] }),
         },
         {
+          name: "pdfLink",
+          title: "PDF लिंक (पत्रिका अंक के लिए)",
+          type: "url",
+          description:
+            "अगर यह पोस्ट पत्रिका का अंक है, तो PDF का Cloudinary URL यहाँ डालें",
+          validation: (Rule) => Rule.uri({ scheme: ["http", "https"] }),
+          hidden: ({ document }) => {
+            // सिर्फ तब दिखेगा जब category "नए-पुराने अंक" हो
+            const categoryRef = document?.category;
+            // Category reference से name नहीं मिल सकता directly
+            // इसलिए यह field हमेशा दिखेगा, लेकिन description से समझ आ जाएगा
+            return false;
+          },
+        },
+        {
           name: "views",
           title: "Views Count",
           type: "number",
