@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { X } from "lucide-react";
 import Image from "next/image";
 
 export default function MashalNavbar() {
@@ -18,23 +18,23 @@ export default function MashalNavbar() {
   ];
 
   return (
-    <nav className="bg-red-700 text-white shadow-lg">
+    <nav className="shadow-lg">
       <div className="max-w-full px-4 sm:px-6 lg:px-8">
         {/* Logo and Tagline Section */}
-        <div className="py-6 text-center relative">
+        <div className="py-6 text-center relative bg-white">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-md hover:bg-red-600 absolute right-4 top-4 flex flex-col gap-1.5"
+            className="block lg:hidden p-2 rounded-md hover:bg-gray-200 absolute right-4 top-4"
             aria-label="Menu"
           >
             {isOpen ? (
-              <X size={28} className="text-white" />
+              <X size={28} className="text-black" />
             ) : (
-              <>
-                <span className="block w-7 h-0.5 bg-white"></span>
-                <span className="block w-7 h-0.5 bg-white"></span>
-                <span className="block w-7 h-0.5 bg-white"></span>
-              </>
+              <div className="flex flex-col gap-1.5">
+                <span className="block w-7 h-0.5 bg-black"></span>
+                <span className="block w-7 h-0.5 bg-black"></span>
+                <span className="block w-7 h-0.5 bg-black"></span>
+              </div>
             )}
           </button>
 
@@ -49,14 +49,14 @@ export default function MashalNavbar() {
                 className="w-auto h-auto mx-auto"
               />
             </div>
-            <p className="text-base sm:text-lg font-semibold">
+            <p className="text-base sm:text-lg font-semibold text-black">
               समाजवादी क्रांति की दिशा
             </p>
           </a>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex justify-between items-center border-t border-red-600">
+        <div className="hidden lg:flex justify-between items-center bg-red-700 text-white">
           {navItems.map((item) => (
             <a
               key={item.name}
@@ -71,13 +71,13 @@ export default function MashalNavbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden bg-red-800 border-t border-red-600">
+        <div className="block lg:hidden bg-red-700 text-white border-t border-red-600">
           <div className="px-4 py-3 space-y-1">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="block px-4 py-3 rounded-md text-base font-medium hover:bg-red-700 transition"
+                className="block px-4 py-3 rounded-md text-base font-medium hover:bg-red-600 transition"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
