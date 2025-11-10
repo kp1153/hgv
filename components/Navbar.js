@@ -24,10 +24,18 @@ export default function MashalNavbar() {
         <div className="py-6 text-center relative">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-md hover:bg-red-600 absolute right-4 top-4"
+            className="lg:hidden p-2 rounded-md hover:bg-red-600 absolute right-4 top-4 flex flex-col gap-1.5"
             aria-label="Menu"
           >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+            {isOpen ? (
+              <X size={28} className="text-white" />
+            ) : (
+              <>
+                <span className="block w-7 h-0.5 bg-white"></span>
+                <span className="block w-7 h-0.5 bg-white"></span>
+                <span className="block w-7 h-0.5 bg-white"></span>
+              </>
+            )}
           </button>
 
           <a href="/" className="inline-block">
