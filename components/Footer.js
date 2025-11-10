@@ -2,8 +2,25 @@ export default function Footer() {
   return (
     <footer className="bg-red-800 border-t border-red-900 mt-auto">
       <div className="max-w-7xl mx-auto px-4 py-6">
-        <div className="text-center text-white">
-          <p>
+        <div className="text-center text-white space-y-4">
+          <div className="flex flex-wrap justify-center gap-4 text-sm">
+            <a href="/about" className="hover:text-yellow-300">
+              हमारे बारे में
+            </a>
+            <span>|</span>
+            <a href="/editors" className="hover:text-yellow-300">
+              संपादक मंडल
+            </a>
+            <span>|</span>
+            <a href="/contact" className="hover:text-yellow-300">
+              संपर्क
+            </a>
+            <span>|</span>
+            <a href="/contribute" className="hover:text-yellow-300">
+              योगदान
+            </a>
+          </div>
+          <p className="text-sm">
             © 2025, All Rights Reserved to मशाल. Design by{" "}
             <a
               href="https://www.web-developer-kp.com"
