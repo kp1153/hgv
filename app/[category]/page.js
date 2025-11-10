@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 const getCategoryDisplayName = (route) => {
   const displayNames = {
     "desh-duniya": "देश-दुनिया",
-    "majdoor-sangharsh": "मजदूरों का संघर्ष",
+    "majdoor-sangharsh": "मजदूरों के संघर्ष",
     "majdoor-halat": "मजदूरों के हालात",
     vaichariki: "वैचारिकी",
     "kala-sanskriti": "कला-संस्कृति",
