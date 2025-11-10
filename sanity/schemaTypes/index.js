@@ -186,6 +186,16 @@ function hindiToRoman(input) {
   return transliteratedWords.join("-");
 }
 
+const PREDEFINED_CATEGORIES = [
+  { name: "देश-दुनिया", slug: "desh-duniya" },
+  { name: "मजदूरों का संघर्ष", slug: "majdoor-sangharsh" },
+  { name: "मजदूरों के हालात", slug: "majdoor-halat" },
+  { name: "वैचारिकी", slug: "vaichariki" },
+  { name: "कला-संस्कृति", slug: "kala-sanskriti" },
+  { name: "वीडियो", slug: "video" },
+  { name: "नए-पुराने अंक", slug: "naye-purane-ank" },
+];
+
 export const schema = {
   types: [
     {
@@ -197,6 +207,12 @@ export const schema = {
           name: "name",
           title: "श्रेणी का नाम",
           type: "string",
+          options: {
+            list: PREDEFINED_CATEGORIES.map((cat) => ({
+              title: cat.name,
+              value: cat.name,
+            })),
+          },
           validation: (Rule) =>
             Rule.required().error("श्रेणी का नाम आवश्यक है"),
         },
@@ -208,12 +224,10 @@ export const schema = {
             source: "name",
             maxLength: 96,
             slugify: (input) => {
-              const romanized = hindiToRoman(input);
-              const timePart = new Date()
-                .toISOString()
-                .replace(/[-:.TZ]/g, "")
-                .slice(0, 14);
-              return `${romanized}-${timePart}`;
+              const predefined = PREDEFINED_CATEGORIES.find(
+                (cat) => cat.name === input
+              );
+              return predefined ? predefined.slug : hindiToRoman(input);
             },
           },
           validation: (Rule) => Rule.required().error("Slug आवश्यक है"),
@@ -289,7 +303,7 @@ export const schema = {
           name: "publishedAt",
           title: "प्रकाशन तारीख",
           type: "datetime",
-          initialValue: () => new Date().toISOString(),
+          initialValue: new Date().toISOString(),
           validation: (Rule) =>
             Rule.required().error("प्रकाशन तारीख आवश्यक है"),
         },
@@ -371,23 +385,9 @@ export const schema = {
               { title: "मोटा (Bold)", value: "strong" },
               { title: "तिरछा (Italic)", value: "em" },
               { title: "अंडरलाइन", value: "underline" },
-              { title: "लाल रंग", value: "redText" },
+              { title: "पिंक", value: "pink" },
             ],
             annotations: [
-              {
-                title: "लाल रंग",
-                name: "color",
-                type: "object",
-                fields: [
-                  {
-                    title: "रंग",
-                    name: "value",
-                    type: "string",
-                    initialValue: "red",
-                    hidden: true,
-                  },
-                ],
-              },
               {
                 title: "लिंक",
                 name: "link",

@@ -9,7 +9,7 @@ export default function MashalNavbar() {
   const navItems = [
     { name: "होम", href: "/" },
     { name: "देश-दुनिया", href: "/desh-duniya" },
-    { name: "मजदूरों का संघर्ष", href: "/majdoor-sangharsh" },
+    { name: "मजदूरों के संघर्ष", href: "/majdoor-sangharsh" },
     { name: "मजदूरों के हालात", href: "/majdoor-halat" },
     { name: "वैचारिकी", href: "/vaichariki" },
     { name: "कला-संस्कृति", href: "/kala-sanskriti" },

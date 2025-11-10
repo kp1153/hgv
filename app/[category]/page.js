@@ -7,12 +7,13 @@ export const dynamic = "force-dynamic";
 
 const getCategoryDisplayName = (route) => {
   const displayNames = {
-    theory: "विचार / सिद्धांत",
-    politics: "राजनीति / देश-दुनिया",
-    movements: "आंदोलन / संघर्ष",
-    culture: "संस्कृति / साहित्य",
-    authors: "लेखक / संपादक मंडल",
-    contact: "संपर्क / योगदान",
+    "desh-duniya": "देश-दुनिया",
+    "majdoor-sangharsh": "मजदूरों का संघर्ष",
+    "majdoor-halat": "मजदूरों के हालात",
+    vaichariki: "वैचारिकी",
+    "kala-sanskriti": "कला-संस्कृति",
+    video: "वीडियो",
+    issues: "नए-पुराने अंक",
   };
   return displayNames[route] || route;
 };
@@ -22,12 +23,13 @@ export default async function CategoryPage({ params }) {
   const safeCategory = decodeURIComponent(category);
 
   const validCategories = [
-    "theory",
-    "politics",
-    "movements",
-    "culture",
-    "authors",
-    "contact",
+    "desh-duniya",
+    "majdoor-sangharsh",
+    "majdoor-halat",
+    "vaichariki",
+    "kala-sanskriti",
+    "video",
+    "issues",
   ];
 
   if (!validCategories.includes(safeCategory)) {
