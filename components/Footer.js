@@ -12,10 +12,6 @@ export default function Footer() {
               संपादक मंडल
             </a>
             <span>|</span>
-            <a href="/contact" className="hover:text-yellow-300">
-              संपर्क
-            </a>
-            <span>|</span>
             <a href="/contribute" className="hover:text-yellow-300">
               योगदान
             </a>
