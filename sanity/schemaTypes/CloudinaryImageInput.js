@@ -18,7 +18,7 @@ export default function CloudinaryImageInput(props) {
       try {
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset", "sanity");
+        formData.append("upload_preset", "saurabh");
         formData.append("folder", "sanity-images");
 
         const response = await fetch(
