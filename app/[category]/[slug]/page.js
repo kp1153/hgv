@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPostBySlugAndCategory } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
-
+import ViewsCounter from "@/components/ViewsCounter";
 export const dynamic = "force-dynamic";
 
 const getCategoryDisplayName = (route) => {
@@ -14,7 +14,6 @@ const getCategoryDisplayName = (route) => {
     vaichariki: "वैचारिकी",
     "kala-sanskriti": "कला-संस्कृति",
     video: "वीडियो",
-    "naye-purane-ank": "नए-पुराने अंक",
   };
   return displayNames[route] || route;
 };
@@ -65,8 +64,8 @@ const portableTextComponents = {
     ),
     em: ({ children }) => <em className="italic">{children}</em>,
     underline: ({ children }) => <span className="underline">{children}</span>,
-    redText: ({ children }) => (
-      <span className="text-red-600 font-semibold">{children}</span>
+    pink: ({ children }) => (
+      <span className="text-pink-600 font-medium">{children}</span>
     ),
     link: ({ value, children }) => {
       const href = value?.href || "#";
@@ -132,7 +131,6 @@ export default async function NewsPage({ params }) {
     "vaichariki",
     "kala-sanskriti",
     "video",
-    "naye-purane-ank",
   ];
 
   if (!validCategories.includes(safeCategory)) {
@@ -166,6 +164,7 @@ export default async function NewsPage({ params }) {
         <div className="flex items-center justify-end mb-6">
           <div className="flex items-center gap-4 text-sm text-gray-600">
             <span className="font-medium">{formatDate(post.publishedAt)}</span>
+            <ViewsCounter slug={safeSlug} initialViews={post.views || 0} />
           </div>
         </div>
 
@@ -192,85 +191,6 @@ export default async function NewsPage({ params }) {
           </p>
         )}
 
-        {post.pdfLink && (
-          <div className="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-6 mb-8 shadow-md">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <svg
-                  className="w-12 h-12 text-red-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                  />
-                </svg>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900">
-                    पत्रिका का पूरा अंक
-                  </h3>
-                  <p className="text-sm text-gray-600">
-                    PDF फॉर्मेट में उपलब्ध
-                  </p>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <a
-                  href={post.pdfLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all duration-200 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-                >
-                  <svg
-                    className="w-5 h-5 mr-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                    />
-                  </svg>
-                  PDF पढ़ें
-                </a>
-                <a
-                  href={post.pdfLink}
-                  download
-                  className="inline-flex items-center px-6 py-3 bg-white text-red-600 border-2 border-red-600 rounded-lg hover:bg-red-50 transition-all duration-200 font-semibold shadow hover:shadow-lg"
-                >
-                  <svg
-                    className="w-5 h-5 mr-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-                    />
-                  </svg>
-                  डाउनलोड करें
-                </a>
-              </div>
-            </div>
-          </div>
-        )}
-
         <article className="bg-white rounded-xl shadow-lg p-8 mb-8">
           <div className="prose prose-lg max-w-none">
             <PortableText
@@ -283,7 +203,7 @@ export default async function NewsPage({ params }) {
         <div className="flex items-center justify-center">
           <Link
             href="/"
-            className="inline-flex items-center px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-semibold"
+            className="inline-flex items-center px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors font-semibold"
           >
             होम पेज
             <svg

@@ -13,7 +13,6 @@ const getCategoryDisplayName = (route) => {
     vaichariki: "वैचारिकी",
     "kala-sanskriti": "कला-संस्कृति",
     video: "वीडियो",
-    "naye-purane-ank": "नए-पुराने अंक",
   };
   return displayNames[route] || route;
 };
@@ -29,7 +28,6 @@ export default async function CategoryPage({ params }) {
     "vaichariki",
     "kala-sanskriti",
     "video",
-    "naye-purane-ank",
   ];
 
   if (!validCategories.includes(safeCategory)) {
@@ -41,7 +39,7 @@ export default async function CategoryPage({ params }) {
   if (!posts || posts.length === 0) {
     return (
       <div className="max-w-6xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8 text-red-700">
+        <h1 className="text-3xl font-bold mb-8">
           {getCategoryDisplayName(safeCategory)}
         </h1>
         <div className="text-center py-12">
@@ -67,7 +65,7 @@ export default async function CategoryPage({ params }) {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-red-700">
+      <h1 className="text-3xl font-bold mb-8 text-gray-900">
         {categoryDisplayName}
       </h1>
 
@@ -99,14 +97,14 @@ export default async function CategoryPage({ params }) {
                 </span>
               </div>
 
-              <Link
-                href={`/${post.category?.slug?.current}/${post.slug?.current}`}
-                className="block"
-              >
-                <h2 className="text-xl font-bold mb-4 line-clamp-2 leading-tight text-gray-900 hover:text-red-700 transition-colors hover:underline">
+              <h2 className="text-xl font-bold mb-4 line-clamp-2 leading-tight text-gray-900 hover:text-red-700 transition-colors">
+                <Link
+                  href={`/${post.category?.slug?.current}/${post.slug?.current}`}
+                  className="hover:underline"
+                >
                   {post.title}
-                </h2>
-              </Link>
+                </Link>
+              </h2>
 
               <div className="mt-auto">
                 {post.category?.slug?.current && post.slug?.current && (
