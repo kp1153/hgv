@@ -14,6 +14,7 @@ const getCategoryDisplayName = (route) => {
     vaichariki: "वैचारिकी",
     "kala-sanskriti": "कला-संस्कृति",
     video: "वीडियो",
+    "naye-purane-ank": "नए-पुराने अंक",
   };
   return displayNames[route] || route;
 };
@@ -131,6 +132,7 @@ export default async function NewsPage({ params }) {
     "vaichariki",
     "kala-sanskriti",
     "video",
+    "naye-purane-ank",
   ];
 
   if (!validCategories.includes(safeCategory)) {
