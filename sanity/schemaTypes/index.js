@@ -1,5 +1,6 @@
 import MultiImageInput from "./MultiImageInput";
 import CloudinaryImageInput from "./CloudinaryImageInput";
+import CloudinaryPDFInput from "./CloudinaryPDFInput";
 
 function hindiToRoman(input) {
   if (!input) return "";
@@ -324,17 +325,11 @@ export const schema = {
         {
           name: "pdfLink",
           title: "PDF लिंक (पत्रिका अंक के लिए)",
-          type: "url",
-          description:
-            "अगर यह पोस्ट पत्रिका का अंक है, तो PDF का Cloudinary URL यहाँ डालें",
-          validation: (Rule) => Rule.uri({ scheme: ["http", "https"] }),
-          hidden: ({ document }) => {
-            // सिर्फ तब दिखेगा जब category "नए-पुराने अंक" हो
-            const categoryRef = document?.category;
-            // Category reference से name नहीं मिल सकता directly
-            // इसलिए यह field हमेशा दिखेगा, लेकिन description से समझ आ जाएगा
-            return false;
+          type: "string",
+          components: {
+            input: CloudinaryPDFInput,
           },
+          description: "अगर यह पोस्ट पत्रिका का अंक है, तो PDF यहाँ अपलोड करें",
         },
         {
           name: "views",
