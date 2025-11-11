@@ -14,7 +14,7 @@ const getCategoryDisplayName = (route) => {
     vaichariki: "वैचारिकी",
     "kala-sanskriti": "कला-संस्कृति",
     video: "वीडियो",
-    issues: "नए-पुराने अंक",
+    "naye-purane-ank": "नए-पुराने अंक",
   };
   return displayNames[route] || route;
 };
@@ -132,7 +132,7 @@ export default async function NewsPage({ params }) {
     "vaichariki",
     "kala-sanskriti",
     "video",
-    "issues",
+    "naye-purane-ank",
   ];
 
   if (!validCategories.includes(safeCategory)) {
@@ -192,7 +192,6 @@ export default async function NewsPage({ params }) {
           </p>
         )}
 
-        {/* PDF Download Section - NEW */}
         {post.pdfLink && (
           <div className="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-6 mb-8 shadow-md">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
