@@ -13,7 +13,7 @@ const getCategoryDisplayName = (route) => {
     vaichariki: "वैचारिकी",
     "kala-sanskriti": "कला-संस्कृति",
     video: "वीडियो",
-    "naye-purane-ank": "नए-पुराने अंक", // ✅ Fixed
+    "naye-purane-ank": "नए-पुराने अंक",
   };
   return displayNames[route] || route;
 };
@@ -29,7 +29,7 @@ export default async function CategoryPage({ params }) {
     "vaichariki",
     "kala-sanskriti",
     "video",
-    "naye-purane-ank", // ✅ Fixed
+    "naye-purane-ank",
   ];
 
   if (!validCategories.includes(safeCategory)) {
@@ -99,14 +99,14 @@ export default async function CategoryPage({ params }) {
                 </span>
               </div>
 
-              <h2 className="text-xl font-bold mb-4 line-clamp-2 leading-tight text-gray-900 hover:text-red-700 transition-colors">
-                <Link
-                  href={`/${post.category?.slug?.current}/${post.slug?.current}`}
-                  className="hover:underline"
-                >
+              <Link
+                href={`/${post.category?.slug?.current}/${post.slug?.current}`}
+                className="block"
+              >
+                <h2 className="text-xl font-bold mb-4 line-clamp-2 leading-tight text-gray-900 hover:text-red-700 transition-colors hover:underline">
                   {post.title}
-                </Link>
-              </h2>
+                </h2>
+              </Link>
 
               <div className="mt-auto">
                 {post.category?.slug?.current && post.slug?.current && (
