@@ -19,6 +19,14 @@ const getCategoryDisplayName = (route) => {
   return displayNames[route] || route;
 };
 
+// YouTube video ID extract करने का helper function
+const getYouTubeID = (url) => {
+  if (!url) return null;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  return match && match[2].length === 11 ? match[2] : null;
+};
+
 const portableTextComponents = {
   block: {
     normal: ({ children }) => (
@@ -117,6 +125,30 @@ const portableTextComponents = {
         ))}
       </div>
     ),
+    youtube: ({ value }) => {
+      if (!value?.url) return null;
+      const videoId = getYouTubeID(value.url);
+      if (!videoId) return null;
+
+      return (
+        <div className="my-8">
+          <div className="relative w-full pb-[56.25%] rounded-lg overflow-hidden shadow-lg bg-black">
+            <iframe
+              src={`https://www.youtube.com/embed/${videoId}`}
+              title={value.caption || "YouTube video"}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full"
+            />
+          </div>
+          {value.caption && (
+            <p className="text-sm text-gray-600 text-center mt-2 italic">
+              {value.caption}
+            </p>
+          )}
+        </div>
+      );
+    },
   },
 };
 
@@ -173,6 +205,21 @@ export default async function NewsPage({ params }) {
         <h1 className="text-4xl font-bold mb-8 text-gray-900 leading-tight">
           {post.title}
         </h1>
+
+        {/* Main videoLink को यहाँ render करो */}
+        {post.videoLink && (
+          <div className="w-full mb-8">
+            <div className="relative w-full pb-[56.25%] rounded-xl overflow-hidden shadow-lg bg-black">
+              <iframe
+                src={`https://www.youtube.com/embed/${getYouTubeID(post.videoLink)}`}
+                title={post.title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="absolute top-0 left-0 w-full h-full"
+              />
+            </div>
+          </div>
+        )}
 
         {post.mainImageUrl && (
           <div className="w-full mb-8 flex justify-center">
