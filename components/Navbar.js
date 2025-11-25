@@ -14,7 +14,6 @@ export default function MashalNavbar() {
     { name: "वैचारिकी", href: "/vaichariki" },
     { name: "कला-संस्कृति", href: "/kala-sanskriti" },
     { name: "वीडियो", href: "/video" },
-    { name: "नए-पुराने अंक", href: "/issues" },
   ];
 
   return (

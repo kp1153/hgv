@@ -1,6 +1,5 @@
 import MultiImageInput from "./MultiImageInput";
 import CloudinaryImageInput from "./CloudinaryImageInput";
-import CloudinaryPDFInput from "./CloudinaryPDFInput";
 
 function hindiToRoman(input) {
   if (!input) return "";
@@ -194,7 +193,6 @@ const PREDEFINED_CATEGORIES = [
   { name: "वैचारिकी", slug: "vaichariki" },
   { name: "कला-संस्कृति", slug: "kala-sanskriti" },
   { name: "वीडियो", slug: "video" },
-  { name: "नए-पुराने अंक", slug: "naye-purane-ank" },
 ];
 
 export const schema = {
@@ -321,15 +319,6 @@ export const schema = {
           title: "वीडियो लिंक",
           type: "url",
           validation: (Rule) => Rule.uri({ scheme: ["http", "https"] }),
-        },
-        {
-          name: "pdfLink",
-          title: "PDF लिंक (पत्रिका अंक के लिए)",
-          type: "string",
-          components: {
-            input: CloudinaryPDFInput,
-          },
-          description: "अगर यह पोस्ट पत्रिका का अंक है, तो PDF यहाँ अपलोड करें",
         },
         {
           name: "views",

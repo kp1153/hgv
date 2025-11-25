@@ -14,7 +14,6 @@ const getCategoryDisplayName = (route) => {
     vaichariki: "वैचारिकी",
     "kala-sanskriti": "कला-संस्कृति",
     video: "वीडियो",
-    "naye-purane-ank": "नए-पुराने अंक",
   };
   return displayNames[route] || route;
 };
